@@ -1,4 +1,4 @@
-package ru.yandex.practicum.stellarburger.api.model;
+package ru.yandex.practicum.stellarburger.api.model.user;
 
 import com.github.javafaker.Faker;
 
