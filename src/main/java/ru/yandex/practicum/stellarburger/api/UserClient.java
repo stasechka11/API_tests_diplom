@@ -10,6 +10,8 @@ import static org.apache.http.HttpStatus.SC_ACCEPTED;
 
 public class UserClient extends BaseApiClient {
     public static final String BASE_PATH_USER = "/api/auth/";
+    //create user messages
+    public static final String USER_ALREADY_EXISTS_MESSAGE = "User already exists";
 
     @Step ("Create user {user}")
     public Response createUser(User user) {
