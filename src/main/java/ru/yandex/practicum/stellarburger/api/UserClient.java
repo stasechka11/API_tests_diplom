@@ -13,6 +13,8 @@ public class UserClient extends BaseApiClient {
     //create user messages
     public static final String USER_ALREADY_EXISTS_MESSAGE = "User already exists";
     public static final String NOT_ALL_REQUIRED_FIELDS_MESSAGE = "Email, password and name are required fields";
+    //login user messages
+    public static final String INCORRECT_CREDENTIALS_MESSAGE = "email or password are incorrect";
 
     @Step ("Create user {user}")
     public Response createUser(User user) {
