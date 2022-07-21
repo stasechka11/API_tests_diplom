@@ -37,34 +37,34 @@ public class CreateUserTest {
         //Check response status code
         Assert.assertEquals(SC_OK, responseCreate.statusCode());
 
-        UserResponse createUserResponse = responseCreate.as(UserResponse.class);
-        accessToken = createUserResponse.getAccessToken();
+        UserResponse responseCreateUserPOJO = responseCreate.as(UserResponse.class);
+        accessToken = responseCreateUserPOJO.getAccessToken();
 
         //Check response body
-        Assert.assertTrue(createUserResponse.isSuccess());
+        Assert.assertTrue(responseCreateUserPOJO.isSuccess());
 
         //Check user exists
         Response responseGet = userClient.getUserInfo(accessToken);
 
-        UserResponse getUserInfoResponse = responseGet.as(UserResponse.class);
-        Assert.assertTrue(getUserInfoResponse.isSuccess());
+        UserResponse responseGetInfoPOJO = responseGet.as(UserResponse.class);
+        Assert.assertTrue(responseGetInfoPOJO.isSuccess());
     }
 
     @Test
     @DisplayName("Check create user with existing name")
     public void createUserNameExistsTest() {
         Response responseCreate = userClient.createUser(user);
-        UserResponse createUserResponse = responseCreate.as(UserResponse.class);
-        accessToken = createUserResponse.getAccessToken();
+        UserResponse responseCreateUserPOJO = responseCreate.as(UserResponse.class);
+        accessToken = responseCreateUserPOJO.getAccessToken();
 
         Response responseCreateDuplicate = userClient.createUser(user);
-        GeneralResponse createDuplicateUserResponse = responseCreateDuplicate.as(GeneralResponse.class);
+        GeneralResponse responseCreateDuplicateUserPOJO = responseCreateDuplicate.as(GeneralResponse.class);
 
         //Check response status code
         Assert.assertEquals(SC_FORBIDDEN, responseCreateDuplicate.statusCode());
 
         //Check response body
-        Assert.assertFalse(createDuplicateUserResponse.isSuccess());
-        Assert.assertEquals(UserClient.USER_ALREADY_EXISTS_MESSAGE, createDuplicateUserResponse.getMessage());
+        Assert.assertFalse(responseCreateDuplicateUserPOJO.isSuccess());
+        Assert.assertEquals(UserClient.USER_ALREADY_EXISTS_MESSAGE, responseCreateDuplicateUserPOJO.getMessage());
     }
 }

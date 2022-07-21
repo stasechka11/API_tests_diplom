@@ -45,9 +45,9 @@ public class CreateUserParameterizedTest {
         //Check response status code
         Assert.assertEquals(SC_FORBIDDEN, responseCreate.statusCode());
 
-        GeneralResponse responseCreateUser = responseCreate.as(GeneralResponse.class);
+        GeneralResponse responseCreateUserPOJO = responseCreate.as(GeneralResponse.class);
         //Check response body
-        Assert.assertFalse(responseCreateUser.isSuccess());
-        Assert.assertEquals(UserClient.NOT_ALL_REQUIRED_FIELDS_MESSAGE, responseCreateUser.getMessage());
+        Assert.assertFalse(responseCreateUserPOJO.isSuccess());
+        Assert.assertEquals(UserClient.NOT_ALL_REQUIRED_FIELDS_MESSAGE, responseCreateUserPOJO.getMessage());
     }
 }
