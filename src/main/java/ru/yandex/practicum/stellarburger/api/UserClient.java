@@ -12,6 +12,7 @@ public class UserClient extends BaseApiClient {
     public static final String BASE_PATH_USER = "/api/auth/";
     //create user messages
     public static final String USER_ALREADY_EXISTS_MESSAGE = "User already exists";
+    public static final String NOT_ALL_REQUIRED_FIELDS_MESSAGE = "Email, password and name are required fields";
 
     @Step ("Create user {user}")
     public Response createUser(User user) {
