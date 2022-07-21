@@ -3,10 +3,10 @@ package ru.yandex.practicum.stellarburger.api;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import ru.yandex.practicum.stellarburger.api.model.user.User;
+import ru.yandex.practicum.stellarburger.api.model.user.UserCredentials;
 
 import static io.restassured.RestAssured.given;
 import static org.apache.http.HttpStatus.SC_ACCEPTED;
-import static org.apache.http.HttpStatus.SC_OK;
 
 public class UserClient extends BaseApiClient {
     public static final String BASE_PATH_USER = "/api/auth/";
@@ -30,6 +30,18 @@ public class UserClient extends BaseApiClient {
                 .log().all()
                 .get(BASE_URL + BASE_PATH_USER + "user");
     }
+
+    @Step ("Login user {userCredentials}")
+    public Response loginUser(UserCredentials userCredentials) {
+        return given()
+                .spec(getReqSpec())
+                .body(userCredentials)
+                .when()
+                .log().all()
+                .post(BASE_URL + BASE_PATH_USER + "login");
+
+    }
+
 
     @Step ("Delete user by accessToken: {accessToken}")
     public void deleteUser(String accessToken) {
