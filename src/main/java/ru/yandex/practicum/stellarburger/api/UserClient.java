@@ -15,6 +15,9 @@ public class UserClient extends BaseApiClient {
     public static final String NOT_ALL_REQUIRED_FIELDS_MESSAGE = "Email, password and name are required fields";
     //login user messages
     public static final String INCORRECT_CREDENTIALS_MESSAGE = "email or password are incorrect";
+    //change user data messages
+    public static final String EMAIL_ALREADY_EXIST_MESSAGE = "User with such email already exists";
+    public static final String SHOULD_BE_AUTHORISED_MESSAGE = "You should be authorised";
 
     @Step ("Create user {user}")
     public Response createUser(User user) {
@@ -45,6 +48,17 @@ public class UserClient extends BaseApiClient {
                 .log().all()
                 .post(BASE_URL + BASE_PATH_USER + "login");
 
+    }
+
+    @Step("Change user data to {user}")
+    public Response changeUserData(String accessToken, User user){
+        return given()
+                .spec(getReqSpec())
+                .header("Authorization", accessToken)
+                .body(user)
+                .when()
+                .log().all()
+                .patch(BASE_URL + BASE_PATH_USER + "user");
     }
 
 
