@@ -52,13 +52,7 @@ public class CreateOrderTest {
 
     @Test
     public void createOrderRandomIngredientsCountTest() {
-        availableIngredients = orderClient.getAvailableIngredients();
-        ingredientList = availableIngredients.getIngredientsList();
-        ingredientIdList = new ArrayList<>();
-        for (Ingredient ingredient : ingredientList) {
-            ingredientIdList.add(ingredient.get_id());
-        }
-
+        ingredientIdList = orderClient.getIdsListOfIngredients();
         int ingredientsCount = new Random().nextInt(ingredientIdList.size() - 1) + 1;
         order = new Order(orderClient.getRandomNIngredientIds(ingredientsCount, ingredientIdList));
 
@@ -85,5 +79,22 @@ public class CreateOrderTest {
         //check response body
         Assert.assertFalse(createOrderResponsePOJO.isSuccess());
         Assert.assertEquals(OrderClient.NO_INGREDIENTS_MESSAGE, createOrderResponsePOJO.getMessage());
+    }
+
+    @Test
+    @DisplayName("Check create order without authorization")
+    public void createOrderNoAuthorizationTest() {
+        ingredientIdList = orderClient.getIdsListOfIngredients();
+        int ingredientsCount = new Random().nextInt(ingredientIdList.size() - 1) + 1;
+        order = new Order(orderClient.getRandomNIngredientIds(ingredientsCount, ingredientIdList));
+
+        Response createOrderResponse = orderClient.createOrder("", order);
+        //check status code
+        Assert.assertEquals(SC_OK, createOrderResponse.statusCode());
+
+        OrderResponse createOrderResponsePOJO = createOrderResponse.as(OrderResponse.class);
+        //check response body
+        Assert.assertTrue(createOrderResponsePOJO.isSuccess());
+        Assert.assertNull(createOrderResponsePOJO.getOrder().getStatus());
     }
 }
