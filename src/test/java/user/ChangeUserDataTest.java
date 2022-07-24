@@ -8,7 +8,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import ru.yandex.practicum.stellarburger.api.UserClient;
-import ru.yandex.practicum.stellarburger.api.model.user.GeneralResponse;
+import ru.yandex.practicum.stellarburger.api.model.GeneralResponse;
 import ru.yandex.practicum.stellarburger.api.model.user.User;
 import ru.yandex.practicum.stellarburger.api.model.user.UserResponse;
 

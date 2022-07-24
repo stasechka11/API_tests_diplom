@@ -9,7 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import ru.yandex.practicum.stellarburger.api.UserClient;
-import ru.yandex.practicum.stellarburger.api.model.user.GeneralResponse;
+import ru.yandex.practicum.stellarburger.api.model.GeneralResponse;
 import ru.yandex.practicum.stellarburger.api.model.user.User;
 
 import static org.apache.http.HttpStatus.SC_FORBIDDEN;

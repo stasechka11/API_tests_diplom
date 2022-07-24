@@ -1,6 +1,5 @@
 package user;
 
-import io.qameta.allure.Step;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.After;
@@ -8,7 +7,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import ru.yandex.practicum.stellarburger.api.UserClient;
-import ru.yandex.practicum.stellarburger.api.model.user.GeneralResponse;
+import ru.yandex.practicum.stellarburger.api.model.GeneralResponse;
 import ru.yandex.practicum.stellarburger.api.model.user.UserResponse;
 import ru.yandex.practicum.stellarburger.api.model.user.User;
 

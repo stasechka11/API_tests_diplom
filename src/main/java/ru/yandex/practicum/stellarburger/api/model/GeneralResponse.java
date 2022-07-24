@@ -1,4 +1,4 @@
-package ru.yandex.practicum.stellarburger.api.model.user;
+package ru.yandex.practicum.stellarburger.api.model;
 
 public class GeneralResponse {
     boolean success;
