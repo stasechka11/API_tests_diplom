@@ -59,4 +59,15 @@ public class OrderClient extends BaseApiClient {
         Collections.shuffle(ingredientsIdsList);
         return ingredientsIdsList.subList(0, idCount);
     }
+
+    @Step("Get user orders with accessToken: {accessToken}")
+    public Response getUserOrders(String accessToken){
+        return
+                given()
+                        .spec(getReqSpec())
+                        .header("Authorization", accessToken)
+                        .when()
+                        .log().all()
+                        .get(BASE_URL + BASE_PATH_ORDER);
+    }
 }
