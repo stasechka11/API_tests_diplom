@@ -3,8 +3,10 @@ package ru.yandex.practicum.stellarburger.api;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import ru.yandex.practicum.stellarburger.api.model.order.AvailableIngredients;
+import ru.yandex.practicum.stellarburger.api.model.order.Ingredient;
 import ru.yandex.practicum.stellarburger.api.model.order.Order;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -39,6 +41,17 @@ public class OrderClient extends BaseApiClient {
                         .when()
                         .log().all()
                         .post(BASE_URL + BASE_PATH_ORDER);
+    }
+
+    @Step("Get ids list of available ingredients")
+    public List<String> getIdsListOfIngredients() {
+        AvailableIngredients availableIngredients = getAvailableIngredients();
+        List<Ingredient> ingredientList = availableIngredients.getIngredientsList();
+        List<String> ingredientIdList = new ArrayList<>();
+        for (Ingredient ingredient : ingredientList) {
+            ingredientIdList.add(ingredient.get_id());
+        }
+        return ingredientIdList;
     }
 
     @Step("Get list with random {idCount} ingredients")
