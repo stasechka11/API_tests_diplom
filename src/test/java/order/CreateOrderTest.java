@@ -1,5 +1,6 @@
 package order;
 
+import com.github.javafaker.Faker;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.After;
@@ -21,8 +22,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import static org.apache.http.HttpStatus.SC_BAD_REQUEST;
-import static org.apache.http.HttpStatus.SC_OK;
+import static org.apache.http.HttpStatus.*;
 
 public class CreateOrderTest {
     UserClient userClient;
@@ -96,5 +96,17 @@ public class CreateOrderTest {
         //check response body
         Assert.assertTrue(createOrderResponsePOJO.isSuccess());
         Assert.assertNull(createOrderResponsePOJO.getOrder().getStatus());
+    }
+
+    @Test
+    @DisplayName("Check create order with incorrect ingredients ids")
+    public void createOrderIncorrectIngredientsIdTest() {
+        Faker faker = new Faker();
+        List<String> ingredientsIdsList = Arrays.asList(faker.bothify("???###?##?##"), faker.bothify("???###?##?#####?#"));
+        order = new Order(ingredientsIdsList);
+
+        Response createOrderResponse = orderClient.createOrder(accessToken, order);
+        //check status code
+        Assert.assertEquals(SC_INTERNAL_SERVER_ERROR, createOrderResponse.statusCode());
     }
 }
