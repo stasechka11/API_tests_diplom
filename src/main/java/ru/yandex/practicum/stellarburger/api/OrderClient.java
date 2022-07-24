@@ -15,6 +15,7 @@ import static io.restassured.RestAssured.given;
 public class OrderClient extends BaseApiClient {
     public static final String BASE_PATH_ORDER = "/api/orders";
     public static final String NO_INGREDIENTS_MESSAGE = "Ingredient ids must be provided";
+    public static final String SHOULD_BE_AUTHORISED = "You should be authorised";
 
     @Step("Get available ingredients")
     public AvailableIngredients getAvailableIngredients() {

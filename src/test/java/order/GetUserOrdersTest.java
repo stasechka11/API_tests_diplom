@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import ru.yandex.practicum.stellarburger.api.OrderClient;
 import ru.yandex.practicum.stellarburger.api.UserClient;
+import ru.yandex.practicum.stellarburger.api.model.GeneralResponse;
 import ru.yandex.practicum.stellarburger.api.model.order.Order;
 import ru.yandex.practicum.stellarburger.api.model.order.OrderResponse;
 import ru.yandex.practicum.stellarburger.api.model.order.UserOrdersResponse;
@@ -18,6 +19,7 @@ import java.util.List;
 import java.util.Random;
 
 import static org.apache.http.HttpStatus.SC_OK;
+import static org.apache.http.HttpStatus.SC_UNAUTHORIZED;
 
 public class GetUserOrdersTest {
     UserClient userClient;
@@ -61,5 +63,20 @@ public class GetUserOrdersTest {
         //check response body
         Assert.assertTrue(getUserOrdersResponsePOJO.getSuccess());
         Assert.assertNotNull(getUserOrdersResponsePOJO.getOrders());
+    }
+
+    @Test
+    @DisplayName("Check get user orders api without authorization")
+    public void getUserOrdersNoAuthorizationTest() {
+        Response getUserOrdersResponse = orderClient.getUserOrders("");
+
+        //check status code
+        Assert.assertEquals(SC_UNAUTHORIZED, getUserOrdersResponse.statusCode());
+
+        GeneralResponse getUserOrdersResponsePOJO = getUserOrdersResponse.as(GeneralResponse.class);
+        //check response body
+        Assert.assertFalse(getUserOrdersResponsePOJO.isSuccess());
+        Assert.assertEquals(OrderClient.SHOULD_BE_AUTHORISED, getUserOrdersResponsePOJO.getMessage());
+
     }
 }
