@@ -50,6 +50,10 @@ public class SubOrder {
         this.owner = owner;
     }
 
+    public int getNumber() {
+        return number;
+    }
+
     public String getStatus() {
         return status;
     }
