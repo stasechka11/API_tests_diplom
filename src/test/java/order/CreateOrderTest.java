@@ -30,8 +30,6 @@ public class CreateOrderTest {
     String accessToken;
     OrderClient orderClient;
     Order order;
-    AvailableIngredients availableIngredients;
-    List<Ingredient> ingredientList;
     List<String> ingredientIdList;
 
 
@@ -51,6 +49,7 @@ public class CreateOrderTest {
     }
 
     @Test
+    @DisplayName("Check create order with random ingredients count")
     public void createOrderRandomIngredientsCountTest() {
         ingredientIdList = orderClient.getIdsListOfIngredients();
         int ingredientsCount = new Random().nextInt(ingredientIdList.size() - 1) + 1;
