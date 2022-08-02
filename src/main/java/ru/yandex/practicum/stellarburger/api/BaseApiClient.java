@@ -12,6 +12,7 @@ public class BaseApiClient {
     public static RequestSpecification getReqSpec() {
         return new RequestSpecBuilder().log(LogDetail.ALL)
                 .addFilter(new AllureRestAssured())
-                .setContentType(ContentType.JSON).build();
+                .setContentType(ContentType.JSON)
+                .setBaseUri(BASE_URL).build();
     }
 }
