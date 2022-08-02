@@ -11,10 +11,12 @@ import ru.yandex.practicum.stellarburger.api.UserClient;
 import ru.yandex.practicum.stellarburger.api.model.GeneralResponse;
 import ru.yandex.practicum.stellarburger.api.model.order.Order;
 import ru.yandex.practicum.stellarburger.api.model.order.OrderResponse;
+import ru.yandex.practicum.stellarburger.api.model.order.UserOrders;
 import ru.yandex.practicum.stellarburger.api.model.order.UserOrdersResponse;
 import ru.yandex.practicum.stellarburger.api.model.user.User;
 import ru.yandex.practicum.stellarburger.api.model.user.UserResponse;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -25,6 +27,7 @@ public class GetUserOrdersTest {
     private UserClient userClient;
     private String accessToken;
     private OrderClient orderClient;
+    private String orderId;
 
 
     @Before
@@ -39,7 +42,7 @@ public class GetUserOrdersTest {
         int ingredientsCount = new Random().nextInt(ingredientIdList.size() - 1) + 1;
         Order order = new Order(orderClient.getRandomNIngredientIds(ingredientsCount, ingredientIdList));
         OrderResponse createOrderResponsePOJO = orderClient.createOrder(accessToken, order).as(OrderResponse.class);
-        String orderId = createOrderResponsePOJO.getOrder().get_id();
+        orderId = createOrderResponsePOJO.getOrder().get_id();
     }
 
     @After
@@ -57,8 +60,10 @@ public class GetUserOrdersTest {
 
         UserOrdersResponse getUserOrdersResponsePOJO = getUserOrdersResponse.as(UserOrdersResponse.class);
         //check response body
+        List<UserOrders> userOrdersList = getUserOrdersResponsePOJO.getOrders();
+
         Assert.assertTrue(getUserOrdersResponsePOJO.getSuccess());
-        Assert.assertNotNull(getUserOrdersResponsePOJO.getOrders());
+        Assert.assertTrue(orderClient.getUserOrdersIds(userOrdersList).contains(orderId));
     }
 
     @Test

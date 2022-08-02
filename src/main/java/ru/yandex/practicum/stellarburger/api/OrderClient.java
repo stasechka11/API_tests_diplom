@@ -5,6 +5,7 @@ import io.restassured.response.Response;
 import ru.yandex.practicum.stellarburger.api.model.order.AvailableIngredients;
 import ru.yandex.practicum.stellarburger.api.model.order.Ingredient;
 import ru.yandex.practicum.stellarburger.api.model.order.Order;
+import ru.yandex.practicum.stellarburger.api.model.order.UserOrders;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -59,6 +60,16 @@ public class OrderClient extends BaseApiClient {
     public List<String> getRandomNIngredientIds(int idCount, List<String> ingredientsIdsList) {
         Collections.shuffle(ingredientsIdsList);
         return ingredientsIdsList.subList(0, idCount);
+    }
+
+    @Step("Get user orders ids")
+    public List<String> getUserOrdersIds(List<UserOrders> userOrdersList) {
+        List<String> orderIdList = new ArrayList<>();
+        for (UserOrders userOrders : userOrdersList)
+        {
+            orderIdList.add(userOrders.get_id());
+        }
+        return orderIdList;
     }
 
     @Step("Get user orders with accessToken: {accessToken}")
