@@ -19,7 +19,7 @@ import static org.apache.http.HttpStatus.SC_UNAUTHORIZED;
 
 @RunWith(Parameterized.class)
 public class LoginUserParameterizedTest {
-    private static final User user = User.getRandomUser();
+    private static final User RANDOM_USER = User.getRandomUser();
     private UserCredentials userCredentialsIncorrect;
     private UserClient userClient;
     private String accessToken;
@@ -31,7 +31,7 @@ public class LoginUserParameterizedTest {
     @Before
     public void setUp() {
         userClient = new UserClient();
-        UserResponse createUserResponsePOJO = userClient.createUser(user).as(UserResponse.class);
+        UserResponse createUserResponsePOJO = userClient.createUser(RANDOM_USER).as(UserResponse.class);
         accessToken = createUserResponsePOJO.getAccessToken();
     }
 
@@ -45,10 +45,10 @@ public class LoginUserParameterizedTest {
         Faker faker = new Faker();
         return new Object[][]{
                 {new UserCredentials("", "")},
-                {new UserCredentials(user.getEmail(), "")},
-                {new UserCredentials(user.getEmail(), faker.bothify("#?##????"))},
-                {new UserCredentials("", user.getPassword())},
-                {new UserCredentials(faker.bothify("#?##????@yandex.ru"), user.getPassword())}
+                {new UserCredentials(RANDOM_USER.getEmail(), "")},
+                {new UserCredentials(RANDOM_USER.getEmail(), faker.bothify("#?##????"))},
+                {new UserCredentials("", RANDOM_USER.getPassword())},
+                {new UserCredentials(faker.bothify("#?##????@yandex.ru"), RANDOM_USER.getPassword())}
         };
     }
 
