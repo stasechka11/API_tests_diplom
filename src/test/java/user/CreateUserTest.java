@@ -15,9 +15,9 @@ import static org.apache.http.HttpStatus.SC_FORBIDDEN;
 import static org.apache.http.HttpStatus.SC_OK;
 
 public class CreateUserTest {
-    User user;
-    UserClient userClient;
-    String accessToken;
+    private User user;
+    private UserClient userClient;
+    private String accessToken;
 
     @Before
     public void setUp() {

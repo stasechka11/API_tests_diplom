@@ -16,8 +16,8 @@ import static org.apache.http.HttpStatus.SC_FORBIDDEN;
 
 @RunWith(Parameterized.class)
 public class CreateUserParameterizedTest {
-    User user;
-    UserClient userClient;
+    private User user;
+    private UserClient userClient;
 
     @Before
     public void setUp() {

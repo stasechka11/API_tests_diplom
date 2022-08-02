@@ -15,11 +15,11 @@ import ru.yandex.practicum.stellarburger.api.model.user.UserResponse;
 import static org.apache.http.HttpStatus.*;
 
 public class ChangeUserDataTest {
-    User user;
-    User user2;
-    UserClient userClient;
-    String accessToken;
-    String accessToken2;
+    private User user;
+    private User user2;
+    private UserClient userClient;
+    private String accessToken;
+    private String accessToken2;
 
     @Before
     public void setUp() {

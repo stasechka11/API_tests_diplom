@@ -20,9 +20,9 @@ import static org.apache.http.HttpStatus.SC_UNAUTHORIZED;
 @RunWith(Parameterized.class)
 public class LoginUserParameterizedTest {
     private static final User user = User.getRandomUser();
-    UserCredentials userCredentialsIncorrect;
-    UserClient userClient;
-    String accessToken;
+    private UserCredentials userCredentialsIncorrect;
+    private UserClient userClient;
+    private String accessToken;
 
     public LoginUserParameterizedTest(UserCredentials userCredentialsIncorrect) {
         this.userCredentialsIncorrect = userCredentialsIncorrect;

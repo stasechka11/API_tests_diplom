@@ -3,10 +3,10 @@ package ru.yandex.practicum.stellarburger.api.model.order;
 import java.util.Date;
 
 public class Owner {
-    String name;
-    String email;
-    Date createdAt;
-    Date updatedAt;
+    private String name;
+    private String email;
+    private Date createdAt;
+    private Date updatedAt;
 
     public Owner(String name, String email, Date createdAt, Date updatedAt) {
         this.name = name;

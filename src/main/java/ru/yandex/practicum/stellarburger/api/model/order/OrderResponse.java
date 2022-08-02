@@ -3,9 +3,9 @@ package ru.yandex.practicum.stellarburger.api.model.order;
 import java.util.List;
 
 public class OrderResponse {
-    boolean success;
-    String name;
-    SubOrder order;
+    private boolean success;
+    private String name;
+    private SubOrder order;
 
     public OrderResponse(boolean success, String name, SubOrder order) {
         this.success = success;

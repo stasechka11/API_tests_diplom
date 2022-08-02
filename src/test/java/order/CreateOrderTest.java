@@ -25,12 +25,12 @@ import java.util.Random;
 import static org.apache.http.HttpStatus.*;
 
 public class CreateOrderTest {
-    UserClient userClient;
-    User user;
-    String accessToken;
-    OrderClient orderClient;
-    Order order;
-    List<String> ingredientIdList;
+    private UserClient userClient;
+    private User user;
+    private String accessToken;
+    private OrderClient orderClient;
+    private Order order;
+    private List<String> ingredientIdList;
 
 
 

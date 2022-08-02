@@ -4,13 +4,13 @@ import java.util.Date;
 import java.util.List;
 
 public class UserOrders {
-    String _id;
-    List<String> ingredients;
-    String status;
-    String name;
-    Date createdAt;
-    Date updatedAt;
-    int number;
+    private String _id;
+    private List<String> ingredients;
+    private String status;
+    private String name;
+    private Date createdAt;
+    private Date updatedAt;
+    private int number;
 
     public UserOrders(String _id, List<String> ingredients, String status, String name, Date createdAt, Date updatedAt, int number) {
         this._id = _id;

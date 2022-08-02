@@ -3,8 +3,8 @@ package ru.yandex.practicum.stellarburger.api.model.order;
 import java.util.List;
 
 public class AvailableIngredients {
-    boolean success;
-    List<Ingredient> data;
+    private boolean success;
+    private List<Ingredient> data;
 
     public AvailableIngredients(boolean success, List<Ingredient> data) {
         this.success = success;

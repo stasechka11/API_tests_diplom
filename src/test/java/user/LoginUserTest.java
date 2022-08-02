@@ -14,10 +14,10 @@ import ru.yandex.practicum.stellarburger.api.model.user.UserResponse;
 import static org.apache.http.HttpStatus.SC_OK;
 
 public class LoginUserTest {
-    User user;
-    UserCredentials userCredentials;
-    UserClient userClient;
-    String accessToken;
+    private User user;
+    private UserCredentials userCredentials;
+    private UserClient userClient;
+    private String accessToken;
 
     @Before
     public void setUp() {

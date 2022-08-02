@@ -3,10 +3,10 @@ package ru.yandex.practicum.stellarburger.api.model.order;
 import java.util.List;
 
 public class UserOrdersResponse {
-    boolean success;
-    List<UserOrders> orders;
-    int total;
-    int totalToday;
+    private boolean success;
+    private List<UserOrders> orders;
+    private int total;
+    private int totalToday;
 
     public UserOrdersResponse(boolean success, List<UserOrders> orders, int total, int totalToday) {
         this.success = success;

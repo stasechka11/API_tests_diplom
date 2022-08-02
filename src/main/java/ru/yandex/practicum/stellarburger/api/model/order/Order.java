@@ -3,7 +3,7 @@ package ru.yandex.practicum.stellarburger.api.model.order;
 import java.util.List;
 
 public class Order {
-    List<String> ingredients;
+    private List<String> ingredients;
 
     public Order(List<String> ingredients) {
         this.ingredients = ingredients;

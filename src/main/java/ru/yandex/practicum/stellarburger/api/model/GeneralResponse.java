@@ -1,8 +1,8 @@
 package ru.yandex.practicum.stellarburger.api.model;
 
 public class GeneralResponse {
-    boolean success;
-    String message;
+    private boolean success;
+    private String message;
 
     public GeneralResponse(boolean success, String message) {
         this.success = success;

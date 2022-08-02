@@ -4,15 +4,15 @@ import java.util.Date;
 import java.util.List;
 
 public class SubOrder {
-    List<Ingredient> ingredients;
-    String _id;
-    Owner owner;
-    String status;
-    String name;
-    Date createdAt;
-    Date updatedAt;
-    int number;
-    int price;
+    private List<Ingredient> ingredients;
+    private String _id;
+    private Owner owner;
+    private String status;
+    private String name;
+    private Date createdAt;
+    private Date updatedAt;
+    private int number;
+    private int price;
 
     public SubOrder(List<Ingredient> ingredients, String _id, Owner owner, String status, String name, Date createdAt, Date updatedAt, int number, int price) {
         this.ingredients = ingredients;

@@ -22,28 +22,24 @@ import static org.apache.http.HttpStatus.SC_OK;
 import static org.apache.http.HttpStatus.SC_UNAUTHORIZED;
 
 public class GetUserOrdersTest {
-    UserClient userClient;
-    User user;
-    String accessToken;
-    OrderClient orderClient;
-    Order order;
-    String orderId;
-    List<String> ingredientIdList;
+    private UserClient userClient;
+    private String accessToken;
+    private OrderClient orderClient;
 
 
     @Before
     public void setUp() {
         userClient = new UserClient();
-        user = User.getRandomUser();
+        User user = User.getRandomUser();
         UserResponse createUserResponsePOJO = userClient.createUser(user).as(UserResponse.class);
         accessToken = createUserResponsePOJO.getAccessToken();
 
         orderClient = new OrderClient();
-        ingredientIdList = orderClient.getIdsListOfIngredients();
+        List<String> ingredientIdList = orderClient.getIdsListOfIngredients();
         int ingredientsCount = new Random().nextInt(ingredientIdList.size() - 1) + 1;
-        order = new Order(orderClient.getRandomNIngredientIds(ingredientsCount, ingredientIdList));
+        Order order = new Order(orderClient.getRandomNIngredientIds(ingredientsCount, ingredientIdList));
         OrderResponse createOrderResponsePOJO = orderClient.createOrder(accessToken, order).as(OrderResponse.class);
-        orderId = createOrderResponsePOJO.getOrder().get_id();
+        String orderId = createOrderResponsePOJO.getOrder().get_id();
     }
 
     @After
