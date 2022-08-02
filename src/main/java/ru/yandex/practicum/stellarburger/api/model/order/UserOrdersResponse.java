@@ -4,11 +4,11 @@ import java.util.List;
 
 public class UserOrdersResponse {
     boolean success;
-    List<GetOrders> orders;
+    List<UserOrders> orders;
     int total;
     int totalToday;
 
-    public UserOrdersResponse(boolean success, List<GetOrders> orders, int total, int totalToday) {
+    public UserOrdersResponse(boolean success, List<UserOrders> orders, int total, int totalToday) {
         this.success = success;
         this.orders = orders;
         this.total = total;
@@ -19,7 +19,7 @@ public class UserOrdersResponse {
         return success;
     }
 
-    public List<GetOrders> getOrders() {
+    public List<UserOrders> getOrders() {
         return orders;
     }
 

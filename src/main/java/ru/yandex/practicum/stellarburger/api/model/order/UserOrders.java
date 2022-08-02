@@ -3,7 +3,7 @@ package ru.yandex.practicum.stellarburger.api.model.order;
 import java.util.Date;
 import java.util.List;
 
-public class GetOrders {
+public class UserOrders {
     String _id;
     List<String> ingredients;
     String status;
@@ -12,7 +12,7 @@ public class GetOrders {
     Date updatedAt;
     int number;
 
-    public GetOrders(String _id, List<String> ingredients, String status, String name, Date createdAt, Date updatedAt, int number) {
+    public UserOrders(String _id, List<String> ingredients, String status, String name, Date createdAt, Date updatedAt, int number) {
         this._id = _id;
         this.ingredients = ingredients;
         this.status = status;
